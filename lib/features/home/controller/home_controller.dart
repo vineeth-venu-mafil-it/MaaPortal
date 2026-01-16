@@ -265,7 +265,7 @@ class HomeController extends ChangeNotifier {
       }
 
       final priority = parts[0];
-      final statusUrl = parts[1]; // base URL
+      final statusUrl = parts[1];
       final menuId = parts[3];
 
       final payload = '$empCode*$menuId*$branchId*$hostName*$ipAddress*1';
@@ -296,7 +296,6 @@ class HomeController extends ChangeNotifier {
         }
       }
 
-      // Fallback: normal browser launch with query params
       final uri = Uri.parse('$baseAction$queryParams');
       if (await canLaunchUrl(uri)) {
         await launchUrl(uri, mode: LaunchMode.externalApplication);

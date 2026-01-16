@@ -43,7 +43,6 @@ class _HomePageState extends State<HomePage> {
           body: SafeArea(
             child: Column(
               children: [
-                // Top Yellow Header
                 Container(
                   width: double.infinity,
                   height: MediaQuery.of(context).size.height * 0.11,
@@ -54,17 +53,20 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       Image.asset(
                         'assets/images/logo.png',
-                        height: 50,
+                        height: 60,
+                        width: 100,
                         fit: BoxFit.contain,
                       ),
                       const SizedBox(width: 20),
                       Expanded(
-                        child: Text(
-                          'MANAPPURAM APPLICATION PORTAL',
-                          style: GoogleFonts.readexPro(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black87,
+                        child: Center(
+                          child: Text(
+                            'MANAPPURAM APPLICATION PORTAL',
+                            style: GoogleFonts.readexPro(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.black87,
+                            ),
                           ),
                         ),
                       ),
@@ -76,12 +78,9 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                 ),
-
-                // Main Content Area
                 Expanded(
                   child: Row(
                     children: [
-                      // Left: Apps Grid with Search & Tabs (75%)
                       Expanded(
                         flex: 3,
                         child: LayoutBuilder(
@@ -95,7 +94,6 @@ class _HomePageState extends State<HomePage> {
                               builder: (context, provider, _) {
                                 return Column(
                                   children: [
-                                    // Search Bar Section
                                     Container(
                                       color: Colors.white,
                                       padding: const EdgeInsets.symmetric(
@@ -112,7 +110,8 @@ class _HomePageState extends State<HomePage> {
                                             ),
                                           ),
                                           SizedBox(
-                                            width: 250,
+                                            width: 200,
+                                            height:35,
                                             child: TextField(
                                               controller: _searchController,
                                               onChanged:
@@ -159,8 +158,6 @@ class _HomePageState extends State<HomePage> {
                                         ],
                                       ),
                                     ),
-
-                                    // Tabs + Grid
                                     Expanded(
                                       child: DefaultTabController(
                                         length: 2,
@@ -338,8 +335,8 @@ class _HomePageState extends State<HomePage> {
               child: InkWell(
                 borderRadius: BorderRadius.circular(12.0),
                 onTap: () {
-                  // Handle tap - replace with your navigation logic
-                  // Example: Navigator.push(...);
+                  provider.handleMenuAction(
+                      "${task.priority ?? ''}~${task.status ?? ''}~${task.content}~${task.taskId}");
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(12.0),
